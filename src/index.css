@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-stoic-bg text-stoic-text font-sans antialiased;
+  }
+}
+
+/* No-Animation Policy */
+*, *::before, *::after {
+  transition: none !important;
+  animation: none !important;
+}
