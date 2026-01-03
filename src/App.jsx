@@ -7,13 +7,14 @@ import RSSFeed from './components/Feed/RSSFeed';
 import FinanceModule from './components/Finance/FinanceModule';
 import ChatGPTModule from './components/ChatGPT/ChatGPTModule';
 import InvestmentHub from './components/Investment/InvestmentHub';
+import GambleRecovery from './components/GambleRecovery/GambleRecovery';
 import { getStats } from './services/api';
 import { testConnection } from './utils/testAPI';
 import { testFinanceAPI } from './services/financeApi';
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [activeView, setActiveView] = useState('dashboard'); // dashboard, finance, chatgpt, learning, settings
+  const [activeView, setActiveView] = useState('dashboard'); // dashboard, finance, chatgpt, learning, settings, gamble
   const [data, setData] = useState({
     currentStreak: 0,
     maxStreak: 0,
@@ -49,9 +50,14 @@ function App() {
       const { testInvestmentAPI } = await import('./services/investmentApi');
       return testInvestmentAPI();
     };
+    window.testGambleAPI = async () => {
+      const { testGambleAPI } = await import('./services/gambleApi');
+      return testGambleAPI();
+    };
     console.log('💡 Tip: Run window.testAPI() to test Dopamine API');
     console.log('💰 Tip: Run window.testFinanceAPI() to test Finance API');
     console.log('📈 Tip: Run window.testInvestmentAPI() to test Investment API');
+    console.log('🎲 Tip: Run window.testGambleAPI() to test Gamble Recovery API');
   }, []);
 
   if (loading && activeView === 'dashboard') {
@@ -104,6 +110,8 @@ function App() {
       )}
 
       {activeView === 'investment' && <InvestmentHub />}
+
+      {activeView === 'gamble' && <GambleRecovery onSwitchView={setActiveView} />}
 
       {activeView === 'chatgpt' && <ChatGPTModule />}
 

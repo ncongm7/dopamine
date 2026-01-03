@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, Wallet, BookOpen, Settings, Activity, MessageSquare, TrendingUp } from 'lucide-react';
+import { Brain, Wallet, BookOpen, Settings, Activity, MessageSquare, TrendingUp, Shield } from 'lucide-react';
 
 const Sidebar = ({ activeView, onViewChange }) => {
   return (
@@ -27,6 +27,12 @@ const Sidebar = ({ activeView, onViewChange }) => {
           label="Investment" 
           active={activeView === 'investment'}
           onClick={() => onViewChange('investment')}
+        />
+        <NavItem 
+          icon={<Shield />} 
+          label="Recovery" 
+          active={activeView === 'gamble'}
+          onClick={() => onViewChange('gamble')}
         />
         <NavItem 
           icon={<MessageSquare />} 
