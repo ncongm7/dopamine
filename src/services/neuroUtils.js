@@ -1,4 +1,4 @@
-const GROQ_API_KEY = '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';
+const GROQ_API_KEY = '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';
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 let analysisCache = {};
